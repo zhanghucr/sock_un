@@ -16,16 +16,16 @@ int main(int argc, char *argv[])
     
     //creat unix socket
     connect_fd = socket(PF_UNIX, SOCK_STREAM, 0);
-    if (connect_fd<0)  
+    if (connect_fd < 0)  
     {  
         perror("cannot create communication socket");  
-        return 1;  
+        return 1;
     }
     
-    srv_addr.sun_family = AF_UNIX;  
-    strcpy(srv_addr.sun_path, UNIX_DOMAIN);  
-    //connect server  
-    ret=connect(connect_fd, (struct sockaddr *)&srv_addr, sizeof(srv_addr));  
+    srv_addr.sun_family = AF_UNIX;
+    strcpy(srv_addr.sun_path, UNIX_DOMAIN);
+    //connect server
+    ret = connect(connect_fd, (struct sockaddr *)&srv_addr, sizeof(srv_addr));
     if (ret == -1)
     {
         perror("cannot connect to the server");  
